@@ -3,60 +3,7 @@
 
 ## 1. Installation
 
-## 1.a First, get the minimal requirements
-
-Install this requirements before to continue.
-
-Desktop requirements :
--   NodeJS
--   Frida > 11.0.2
--   Java 
--   APKTool
-
-Device requirements :
--   Frida-server > 11.0.2 (if injected)
-
-## 1.b Next, build the dependencies
-
-First, you need to rebuild the dependencies for your version of node.
-
-Execute the following command from the repository containing the INSTALL.md file.
-```
-npm rebuild
-``` 
-
-## 1.c Next, extract and convert Android APIs
-
-You need to get and convert the **android.jar** file for each API version needed to a .dex file and store it in a folder using the call convention :
-```
-<DEXCALIBUR_HOME>/APIs/android_<api_version>/android.dex
-```
-
-You can use the ApiHelper from the command line, by using the script : 
-```
-./export_android --src=<SDK_HOME> --out=<DEXCALIBUR_HOME> [--api=<verion>] 
-```
-
-## 1.d Finally, you can run the application
-
-When you run the application you need to specify a value of --api corresponding to this exported previously.
-
-```
-./dexcalibur --app=com.app.test --port=8000 --pull
-```
-
-## Or by using the Dexcalibur script :
-
-
-The *dexcalibur* script can scan an app, installed on the connected device or downloaded in the dexcalibur workspace 
-```
-$ ./dexcalibur  --app=com.app.test --port=8000
-```
-
-Installer les dependances NodeJS
-```
-npm install
-```
+Follow installation guide : https://github.com/FrenchYeti/dexcalibur/wiki/Installation-guide
 
 ## 2. Get starting
 

@@ -17,19 +17,27 @@ The example below shows how start to scan an application:
 ```
 
 For each arguments taking a value, the arguments value should be separated from the argument
-name by an equal like :
+name by an 'equal' symbol like :
 ```
 --api=android:7.0.0
 ```
 
 All available arguments are explained below :
 ```
---api=<android>         Specify the android API version to use
---app=<appname>         Specify the application package name 
---port=<port>           If specified, the web server will start after scan. The value is the listening port
---no-frida              Disable Frida dynamic binary instrumentation (useful if frida is not installed or bugged)
---buildClass=<package>  If specified, for each class contained into the package, a "Java.use" statement will be generated. It allows to generate Frida script.
---buildOut=<path>       Required if --buildClass is specified. It is the file path where the generated script will be write.
+-Usage: dexcalibur [--api][--pull][--devices][--app][--apk][--port][--config][--help|-h||] [--no-frida][--buildClass][--buildOut][--buildApi]
+
+	--api	The Android API version to use. It should be one entry of platform_available config option.
+	--pull	To pull the APK file of the targeted application from the device
+	--devices	To list connected devices
+	--app	The targeted application name (if already analyzed)
+	--apk	The path to the target APK file
+	--port	The web server port number
+	--config	The path to a custom config file. Default : ./config.js
+	--help,-h,,	This menu
+	--no-frida	To disable Frida part. It allows to run Dexcalibur to analyze purpose even if Frida is not installed
+	--buildClass	To generate Frida script with a Java.use for each class contained into the specified package (see docs)
+	--buildOut	The output directory
+	--buildApi	To build the representation of the specified Android API
 ```
 
 Advanced use

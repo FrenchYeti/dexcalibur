@@ -90,7 +90,7 @@ Depending of the application size, the memory space and thread allow should be c
 
 To generate a "Java.use" call for each class from a given package.  
 ```
-./dexcalibur --api=android:7.0.0 --app=net.atos.hce.visa.facto --buildClass=java.lang --buildOut=../javaLang.js 
+./dexcalibur --api=android:7.0.0 --app=com.sample.app --buildClass=java.lang --buildOut=../javaLang.js 
 ```
 
 

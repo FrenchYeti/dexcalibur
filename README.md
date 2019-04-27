@@ -13,7 +13,7 @@ The Dexcalibur GUI can be launch from the console by using the *dexcalibur* scri
 
 The example below shows how start to scan an application: 
 ```
-./dexcalibur --api=<Android API> --app=<appname> --port=<webapp_port>
+./dexcalibur --app=<appname> --port=<webapp_port>
 ```
 
 For each arguments taking a value, the arguments value should be separated from the argument
@@ -40,11 +40,10 @@ All available arguments are explained below :
 	--buildApi	To build the representation of the specified Android API
 ```
 
-Advanced use
+Actually, the analysis is based on the Android API 24 (7.0.0). However, you can pass another Android version like it :
 ```
-./dexcalibur --api=android:7.0.0 --buildClass=java.io --buildPath=./scripts/io.js
+./dexcalibur --api=android:7.0.0 --app=<appname> --port=<webapp_port>
 ```
-
 
 
 ### 2.b Using the quickstart Nodejs module 
@@ -85,7 +84,7 @@ Depending of the application size, the memory space and thread allow should be c
 ╚══════════════════════════════════════════════════════════════════╝
 ```
 
-### 2.a Use CLI Analyze an existing application (CLI)
+### 2.d Generate a JS script, performing a "Java.use" for each classes from a package 
 
 
 To generate a "Java.use" call for each class from a given package.  
@@ -94,34 +93,15 @@ To generate a "Java.use" call for each class from a given package.
 ```
 
 
+## 3. GUI Documentation
 
-### 2.b Create a new project (from node term)
+TODO
 
-The application package name as it appears on the device should be 
-```
-> var project = new Dexcalibur("com.sample.app")    // instanciate a new project
-```
+## 4. CLI Documentation
 
-```
-> var project = new Dexcalibur("com.sample.app")    // instanciate a new project
-> project.pull()    // download remote APK associated to the target application
-> project.useAPI("android:7.0.0").analyze()     // decompile the APK, perform Smali statical analysis 
-```
+### 4.a Project
 
-
-Utiliser l'analyseur pour explorer les resultat de l'analyse statis + securite
-
-```
-> project.find.class("*ssl*")
-> project.find.field("*root*")
-> project.find.string("*/su*")
-```
-
-## 3. Documentation
-
-### 3.a Project
-
-#### 3.a.I Device auto-detection
+#### 4.a.I Device auto-detection
 
 If the device are not connected while project initializing, don't worry ! Just plug it, and recall your last failed command. The device will be automatically detected and set as default device. 
 
@@ -139,24 +119,24 @@ In this case you could show something like it before your command output :
 [*] APK decompiled in /tmp/ws/com.whatsapp_dex
 ```
 
-### 3.b Analyzer
+### 4.b Analyzer
 
 This is one of the main components of Dexcalibur. It performs statical analysis by parsing the original binaries and making a modelisation of the application. 
 
 This component takes avantage of the Search API and Security Scanner in order to hook obfuscator methods and dynamically update his modelisation at runtime. It allows the analyzer to discover definition contained in encrypted Dex file, and make a more complete image of the application.
 
 
-#### 3.b.I Analyze with a single connected device
+#### 4.b.I Analyze with a single connected device
 
 If a single device/emulator is connected and installed the packages *com.targeted.app*, the analyzer can be call as it : 
 
 ```
 > var project = new Dexcalibur("com.targeted.app")
 > project.pull()
-> project.useAPI("android:7.0.0").scan()
+> project.useAPI("android:7.0.0").fullscan()
 ```
 
-#### 3.b.II Analyze with several connected devices
+#### 4.b.II Analyze with several connected devices
 
 If several device/emulator are connected, you should use the Device Manager  in order to select the default device for the project :
 
@@ -172,14 +152,14 @@ If several device/emulator are connected, you should use the Device Manager  in 
 > project.scan()
 ```
 
-#### 3.b.III Analyze a directory containing .smali files
+#### 4.b.III Analyze a directory containing .smali files
 
 
 ```
 > project.scan('./output_apktool/')
 ```
 
-#### 3.b.IV Analyze from an APK file
+#### 4.b.IV Analyze from an APK file
 
 
 ```
@@ -187,7 +167,7 @@ If several device/emulator are connected, you should use the Device Manager  in 
 ```
 
 
-### 3.c Search API
+### 4.c Search API
 
 Search API is one of the more complete feature of Dexcalibur. It is the search engine to request the Analyzer database.
 
@@ -202,14 +182,14 @@ The search engine is based on two type of search :
 - to search into the graph by following cross reference and properties from a set of node
 - to filter one or more search results 
 
-#### 3.c.I Search from a set of node
+#### 4.c.I Search from a set of node
 
 
 The search engine use to 
 
-#### 3.c.I Operation on results
+#### 4.c.I Operation on results
 
-#### 3.c.1 Search cross-reference to a read or write operation 
+#### 4.c.1 Search cross-reference to a read or write operation 
 
 ```
 project.find.nocase().calls.getter("calleed.name:login").show()
@@ -217,7 +197,7 @@ project.find.nocase().calls.getter("calleed.name:login").show()
 
 
 
-#### 3.c.I Filtering results
+#### 4.c.I Filtering results
 
 Sometimes there is too much matches and you would like filter the results by some characteristics like a AND clause into the last search request.    
 
@@ -226,11 +206,11 @@ Sometimes there is too much matches and you would like filter the results by som
 ```
 
 
-#### 3.c.I Use case
+#### 4.c.I Use case
 
 
 
-### 3.a Security Scanner
+### 4.a Security Scanner
 
 ```
 > project.security.*
@@ -249,22 +229,24 @@ All tests can be invoked in one way style by the method *scan()*
 
 
 
-### 3.a Disassembler
+### 4.a Disassembler
 
 
-### 3.a Device Manager
-### 3.a Hook Manager
-### 3.a Patch Manager
-### 3.e Backup Manager
+### 4.a Device Manager
+### 4.a Hook Manager
+### 4.a Patch Manager
+### 4.e Backup Manager
 
 
-## 4. API
+## 5. API
 
-### 4.a Project
+### 5.a Search
 
+```
+<type_of_node>("<condition>") [.<filter>("<condition | value>")] *
+```
 
-
-### 4.a FinderResult
+### 5.a FinderResult
 
 
 ```
@@ -297,16 +279,16 @@ All tests can be invoked in one way style by the method *scan()*
 Returns : FinderJoin
 
 
-### 4.a FinderJoin
+### 5.a FinderJoin
 ```
 .on(<search_pattern>)
 ```
 
 
 
-## 4. Troobleshooting
+## 6. Troobleshooting
 
-### 4.a Heap overflow during *.fullscan() calls
+### 6.a Heap overflow during *.fullscan() calls
 
 It appears when Dexcalibur does the static analysis of the target application, and solves references to Class/Field/Method/String. Depending of the application size (quantity of call, instruction, system method inherited, ...). Use the array in order to find good parameter
 

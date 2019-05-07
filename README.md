@@ -1,13 +1,14 @@
 
 # Dexcalibur
 
+[Discover Dexcalibur UI / features](https://github.com/FrenchYeti/dexcalibur/wiki)
+
+
 ## 1. Installation
 
 Follow installation guide : https://github.com/FrenchYeti/dexcalibur/wiki/Installation-guide
 
 ## 2. Getting started
-
-![search engine](https://raw.githubusercontent.com/FrenchYeti/dexcalibur-doc/master/pictures/find_class.png)
 
 ### 2.a Using the Dexcalibur (GUI) launcher 
 

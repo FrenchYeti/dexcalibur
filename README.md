@@ -5,7 +5,8 @@
 
 Follow installation guide : https://github.com/FrenchYeti/dexcalibur/wiki/Installation-guide
 
-## 2. Get starting
+
+## 2. Getting started
 
 ### 2.a Using the Dexcalibur (GUI) launcher 
 

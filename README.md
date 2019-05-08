@@ -22,5 +22,9 @@ If you have already scanned the app, just exec the following command (without --
 ./dexcalibur --app=<appname> --port=<webapp_port>
 ```
 
-For more options, see the Wiki :
+## 3. See more on the wiki : 
 
+* [Screenshots](https://github.com/FrenchYeti/dexcalibur/wiki)
+* [CLI User Guide](https://github.com/FrenchYeti/dexcalibur/wiki/CLI-User-guide)
+* [User Guide](https://github.com/FrenchYeti/dexcalibur/wiki/User-guide)
+* [Troubleshoots](https://github.com/FrenchYeti/dexcalibur/wiki/Troubleshoots)

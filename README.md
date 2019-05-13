@@ -4,7 +4,6 @@
 ![Features](https://raw.githubusercontent.com/FrenchYeti/dexcalibur-doc/master/pictures/aims.png)
 
 
-
 ## 1. Installation
 
 Follow installation guide : https://github.com/FrenchYeti/dexcalibur/wiki/Installation-guide
@@ -16,7 +15,12 @@ docker run -it -v <workspace_path>:/home/dexcalibur/workspace -p 8080:8000 --dev
 # ./dexcalibur --app=<target> --port=8000 [--pull]
 ```
 
-## 2. Getting started
+## 2. Screenshots
+
+![Hook debug](https://raw.githubusercontent.com/FrenchYeti/dexcalibur-doc/master/pictures/debug_hook.png)
+
+
+## 3. Getting started
 
 The Dexcalibur GUI can be launch from the console by using the *dexcalibur* script.
 
@@ -30,7 +34,7 @@ If you have already scanned the app, just exec the following command (without --
 ./dexcalibur --app=<appname> --port=<webapp_port>
 ```
 
-## 3. See more on the wiki : 
+## 4. See more on the wiki : 
 
 * [Screenshots](https://github.com/FrenchYeti/dexcalibur/wiki)
 * [CLI User Guide](https://github.com/FrenchYeti/dexcalibur/wiki/CLI-User-guide)

@@ -1,12 +1,20 @@
 
 # Dexcalibur
 
-[Discover Dexcalibur UI / features](https://github.com/FrenchYeti/dexcalibur/wiki)
+![Features](https://raw.githubusercontent.com/FrenchYeti/dexcalibur-doc/master/pictures/aims.png)
+
 
 
 ## 1. Installation
 
 Follow installation guide : https://github.com/FrenchYeti/dexcalibur/wiki/Installation-guide
+
+Or use Docker ([See docker guide](https://github.com/FrenchYeti/dexcalibur/wiki/Use-the-Docker-image)):
+```
+docker pull frenchyeti/dexcalibur
+docker run -it -v <workspace_path>:/home/dexcalibur/workspace -p 8080:8000 --device=<device_path> frenchyeti/dexcalibur
+# ./dexcalibur --app=<target> --port=8000 [--pull]
+```
 
 ## 2. Getting started
 

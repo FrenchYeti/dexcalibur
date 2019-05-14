@@ -17,7 +17,7 @@ docker run -it -v <workspace_path>:/home/dexcalibur/workspace -p 8080:8000 --dev
 
 ## 2. Screenshots
 
-![Hook debug](https://raw.githubusercontent.com/FrenchYeti/dexcalibur-doc/master/pictures/debug_hook.png)
+![Xref auto update](https://raw.githubusercontent.com/FrenchYeti/dexcalibur-doc/master/pictures/xref_before_after_run.png)
 
 
 ## 3. Getting started

@@ -1,3 +1,4 @@
+![dependencies](https://david-dm.org/frenchyeti/dexcalibur.svg)
 
 # Dexcalibur
 

@@ -17,7 +17,7 @@ docker run -it -v <workspace_path>:/home/dexcalibur/workspace -p 8080:8000 --dev
 
 ## 2. Screenshots
 
-![Xref auto update](https://raw.githubusercontent.com/FrenchYeti/dexcalibur-doc/master/pictures/xref_before_after_run.png)
+![Xref auto update](https://raw.githubusercontent.com/FrenchYeti/dexcalibur-doc/master/pictures/xref_after_run_white.png)
 
 
 ## 3. Getting started

@@ -17,6 +17,8 @@ docker run -it -v <workspace_path>:/home/dexcalibur/workspace -p 8080:8000 --dev
 
 ## 2. Screenshots
 
+Following screenshots illustrate the automatic update of *xrefs* at runtime.
+
 ![Xref auto update](https://raw.githubusercontent.com/FrenchYeti/dexcalibur-doc/master/pictures/xref_after_run_white.png)
 
 

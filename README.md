@@ -3,6 +3,8 @@
 
 # Dexcalibur
 
+See the latest news here : [https://github.com/FrenchYeti/dexcalibur/wiki/News](https://github.com/FrenchYeti/dexcalibur/wiki/News)
+
 ![Features](https://raw.githubusercontent.com/FrenchYeti/dexcalibur-doc/master/pictures/aims.png)
 
 

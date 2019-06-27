@@ -3,6 +3,7 @@
 
 # Dexcalibur
 
+
 See the latest news here : [https://github.com/FrenchYeti/dexcalibur/wiki/News](https://github.com/FrenchYeti/dexcalibur/wiki/News)
 
 ![Features](https://raw.githubusercontent.com/FrenchYeti/dexcalibur-doc/master/pictures/aims.png)
@@ -13,6 +14,9 @@ See the latest news here : [https://github.com/FrenchYeti/dexcalibur/wiki/News](
 Follow installation guide : https://github.com/FrenchYeti/dexcalibur/wiki/Installation-guide
 
 Or use Docker ([See docker guide](https://github.com/FrenchYeti/dexcalibur/wiki/Use-the-Docker-image)):
+
+*(MacOS + Dexcalibur docker + Android emulator (host) = DONT WORK (it could works, but it need some configuartion efforts. Contributors are welcome :D  ))*
+
 ```
 docker pull frenchyeti/dexcalibur
 docker run -it -v <workspace_path>:/home/dexcalibur/workspace -p 8080:8000 --device=<device_path> frenchyeti/dexcalibur

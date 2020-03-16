@@ -11,7 +11,7 @@ Dexcalibur is an Android reverse engineering platform focus on instrumentation a
 * and so ...
 But not only that, because Dexcalibur has own static analysis engine and it is able to execute piece of smali.  
 
-Official documentation has move on  
+Official documentation is available [here (wiki)](https://github.com/FrenchYeti/dexcalibur/wiki) and [here (website - work in progress)](https://frenchyeti.github.io/dexcalibur-doc/). 
 
 See the latest news here : [https://github.com/FrenchYeti/dexcalibur/wiki/News](https://github.com/FrenchYeti/dexcalibur/wiki/News)
 

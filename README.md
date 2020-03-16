@@ -3,52 +3,208 @@
 
 # Dexcalibur
 
+Dexcalibur is an Android reverse engineering platform focus on instrumentation and relaying on dynamic analysis to improve static analysis heuristics. It aims automate boring tasks related to dynamic instrumentation, such as :
+* Write hook code
+* Manage lot of hook message
+* Search interesting thinks to hook
+* Process data gathered by hook (dex file, invoked method, class loader, ...)
+* and so ...
+But not only that, because Dexcalibur has own static analysis engine and it is able to execute piece of smali.  
+
+Official documentation has move on  
 
 See the latest news here : [https://github.com/FrenchYeti/dexcalibur/wiki/News](https://github.com/FrenchYeti/dexcalibur/wiki/News)
 
 Show Dexcalibur videos : [Less than 1 minute to hook 61 methods ? Not a problem. \(youtube\)](https://www.youtube.com/watch?v=2dGoolvMEpI)
 
-![Features](https://raw.githubusercontent.com/FrenchYeti/dexcalibur-doc/master/pictures/aims.png)
+## A. Getting started
 
-
-## 1. Installation
+## A. Installation
 
 Follow installation guide : https://github.com/FrenchYeti/dexcalibur/wiki/Installation-guide
 
-Or use Docker ([See docker guide](https://github.com/FrenchYeti/dexcalibur/wiki/Use-the-Docker-image)):
-
-*(MacOS + Dexcalibur docker + Android emulator (host) = DONT WORK (it could works, but it need some configuartion efforts. Contributors are welcome :D  ))*
-
-```
-docker pull frenchyeti/dexcalibur
-docker run -it -v <workspace_path>:/home/dexcalibur/workspace -p 8080:8000 --device=<device_path> frenchyeti/dexcalibur
-# ./dexcalibur --app=<target> --port=8000 [--pull]
-```
-
-## 2. Screenshots
-
-Following screenshots illustrate the automatic update of *xrefs* at runtime.
-
-![Xref auto update](https://raw.githubusercontent.com/FrenchYeti/dexcalibur-doc/master/pictures/xref_after_run_white.png)
+Or use Docker (DEPRECATED) ([See docker guide](https://github.com/FrenchYeti/dexcalibur/wiki/Use-the-Docker-image)):
 
 
-## 3. Getting started
+## B. Getting started
 
-The Dexcalibur GUI can be launch from the console by using the *dexcalibur* script.
-
-The first time, connect the device to your computer, run the following command, and open your browser (localhost:<webapp_port>) : 
+If you expect to analyze an application already installed on a physical device, then connect the device to your computer, run the following command, and open your browser (localhost:<webapp_port>) : 
 ```
 ./dexcalibur --app=<appname> --port=<webapp_port> --pull
 ```
+
+If you have an APK file to analyze :
+```
+./dexcalibur --app=<appname> --port=<webapp_port> --apk=<path_to_apk>
+``` 
 
 If you have already scanned the app, just exec the following command (without --pull) and open your browser (localhost:<webapp_port>)  :
 ```
 ./dexcalibur --app=<appname> --port=<webapp_port>
 ```
 
-## 4. See more on the wiki : 
 
-* [Screenshots](https://github.com/FrenchYeti/dexcalibur/wiki)
+
+## C. Screenshots
+
+Following screenshots illustrate the automatic update of *xrefs* at runtime.
+
+![Xref auto update](https://raw.githubusercontent.com/FrenchYeti/dexcalibur-doc/master/pictures/xref_after_run_white.png)
+
+
+![Features](https://raw.githubusercontent.com/FrenchYeti/dexcalibur-doc/master/pictures/aims.png)
+
+
+## D. Features and limitations
+
+Actually, the biggest limitation is Dexcalibur is not able to generate source code of hook targeting native function (into JNI library). However, you can declare manually a Frida's Interceptor by editing a hook.
+
+Assuming Dexcalibur does not provide (for the moment) features to analyse native part such as JNI library or JNA, only features and limitations related to Java part have been detailled.  
+
+**Analysis accuracy depends of the completeness of the Android API image used during early steps of the analysis. That means, if you use a DEX file generated from the Android.jar file from Android SDK, some references to internal methods, fields, or classes from Android java API could be missing. Better results are obtained when the analysis start from a "boot.oat" file extracted directly from a real device running the expected Android version.**  
+
+### D.1 Features
+
+#### D.1.A Static analyzer
+
+TODO : write text
+
+
+#### D.1.B Hook manager
+
+TODO : write text
+
+
+#### D.1.C Dexcalibur's smali VM
+
+**Tracked behaviors**
+
+Static analyzer involved into "Run smali (VM)" action is able to discover and accept but track following behaviors :
+* Out-of-bound destination register (register out of v0 - v255)
+* Out-of-bound source register (register out of v0 - v65535)
+* Detect invalid instruction throwing implicitely an internal exception
+* Detect some piece of valid bytecode non-compliant with Android specification
+* Compute length of undefined array
+* Fill undefined array  
+* and more ...
+
+Actually, handlers/listeners for such invalid instruction are not supported but events are tracked and rendered.   
+
+**Dexcalibur IR**
+
+The VM produces a custom and simplified Intermediate Representation (IR) which is displayed **only to help analyst** to perform its analysis. 
+
+Depending of the value of the callstack depth and configuration, IR can include or not instruction executed into called function. If the execution enters into a try block and continues to return, but never excute catch, then the catch block will not be rendered. In fact the purpose of Dexcalibur IR is to render only "what is executed" or "what  could be executed depending of some symbol's value" into VM context. 
+
+Dexcalibur IR helps to read a cleaned version of bytcode by removing useless goto and opaque predicate. Dexcalibur IR can be generated by the VM with 2 simplifying levels :
+
+*1st level IR, could be used if you don't trust 2th level IR  :*
+
+ - no CFG simplifying : conditions and incondtionnal jumps are rendered.
+ - every move into a register are rendered
+
+ 
+
+*2th level :* 
+
+- Hide assign if the register is not modified with an unknown value before its use.
+- Always TRUE/FALSE predicate are removed
+- Inconditional jump such goto are removed under certain conditions : single predecessor of targeted basic block, etc ...  
+- Resolve & replace Method.inoke() call by called method if possible. 
+- Instructions into a Try block are not rendered if an exception is thrown before 
+- ...
+
+**Android API mock**
+
+TODO
+
+**Details**
+
+Smali VM follows steps :
+
+1. Init VM : stack memory, heap, classloaders, method area, ...
+2. The VM load class declaring the method.
+3. (Optionnal) If the class has static blocks, clinit() is executed.  It helps to solve concrete value stored into static properties
+4. Load method metadata
+5. Execute method's instructions, if PseudoCodeMaker is enable, Dexcalibur IR is generated. 
+
+
+How VM handles invoke-* instruction ?  
+
+1. When an invoke-* happens, the local symbol table is saved, and the invoked method is loaded.
+2. If the class declaring the invoked method  has never been loaded, the class is loaded 
+3. If the method has never been loaded, the method is loaded (by MethodArea) and its local symbol table initialized by importing symbols of arguments from caller's symbol table. 
+4. Invoked method is push into callstack (StackMemory).
+5. Method instruction are executed.
+6. Return is push into stack memory
+7. Caller give flow control
+
+#### D.1.D Application analyzers
+
+**Manifest analysis**
+
+**Permission analysis**
+
+**Activities analysis**
+
+**Providers analysis**
+
+**Services analysis**
+
+**Receivers analysis**
+
+
+#### D.1.E Runtime monitoring (not implemented)
+
+**Network monitoring**
+
+**Intent monitoring**
+
+**File access monitoring**
+
+
+
+## E. Github Contributors
+
+
+
+## F. FAQ
+
+### How to contribute to the dexcalibur ?
+
+Create a pull request on this repository or create an issue.
+
+### How to contribute to the documentation?
+
+Create a pull request on [dexcalibur-doc](https://github.com/FrenchYeti/dexcalibur-doc) repository.
+
+Documentation is available at [here (doc website)](https://frenchyeti.github.io/dexcalibur-doc/) and [here (wiki)](https://github.com/FrenchYeti/dexcalibur/wiki/News)
+
+
+
+## G. Resources
+
+There is actually few documentation and training resources about Dexcalibur. If you successfully used Dexcalibur to win CTF challenge or to find vulnerability, i highly encourage you to share your experience. 
+
+
+* [Slides of Pass the SALT 2019 (PDF)](https://github.com/FrenchYeti/dexcalibur/wiki)
+* [Youtube : demonstration](https://www.youtube.com/watch?v=2dGoolvMEpI)
 * [CLI User Guide](https://github.com/FrenchYeti/dexcalibur/wiki/CLI-User-guide)
 * [User Guide](https://github.com/FrenchYeti/dexcalibur/wiki/User-guide)
 * [Troubleshoots](https://github.com/FrenchYeti/dexcalibur/wiki/Troubleshoots)
+* [Screenshots](https://github.com/FrenchYeti/dexcalibur/wiki)
+
+
+## H. They wrote something about Dexcalibur
+
+* [Awesome Frida](https://github.com/dweinstein/awesome-frida)
+* [Awesome OpenSource Security](https://github.com/CaledoniaProject/awesome-opensource-security)
+* [n0secure.org - PassTheSalt2019 J2](https://www.n0secure.org/2019/06/sstic-2019-j2.html)
+* [rootshell.be - PassTheSalt2019 Wrap Up](https://blog.rootshell.be/2019/07/04/pass-the-salt-2019-wrap-up/)
+* [PentesterLand - the 5 hacking newsletter 61](https://pentester.land/newsletter/2019/07/09/the-5-hacking-newsletter-61.html)
+* [Technology Knowledge Database](https://github.com/ikey4u/tkb/blob/d26f47bf75d8d4c1aa5a655ab6c60f876ad7d402/tkb201907.txt)
+* [Xuanwu Lab Security](https://github.com/MyKings/security-study-tutorial/blob/3a5661fb54c6320f403eefa95bcf787324a6e923/origin/Xuanwu%20Lab%20Security/2019/08/01.md)
+* [Mobile Gitbook](https://github.com/z3f1r/mobile-gitbook)
+* [274 - AppsSec Ezine](https://github.com/Simpsonpt/AppSecEzine/blob/60c530b32984921daa47164591e94bb564b0c75c/Ezines/274%20-%20AppSec%20Ezine)
+* [ysh329 / Android Reverse Engineering](https://github.com/ysh329/android-reverse-engineering)
+

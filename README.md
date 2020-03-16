@@ -1,5 +1,6 @@
 ![npm dependencies](https://david-dm.org/frenchyeti/dexcalibur.svg)
 ![Docker Automated build](https://img.shields.io/docker/automated/frenchyeti/dexcalibur.svg?style=flat-square)
+[![Build Status](https://travis-ci.org/FrenchYeti/dexcalibur.svg?branch=master)](https://travis-ci.org/FrenchYeti/dexcalibur)
 
 # Dexcalibur
 

@@ -18,6 +18,27 @@ See the latest news here : [https://github.com/FrenchYeti/dexcalibur/wiki/News](
 
 Show Dexcalibur videos : [Less than 1 minute to hook 61 methods ? Not a problem. \(youtube\)](https://www.youtube.com/watch?v=2dGoolvMEpI)
 
+
+## How to support Dexcalibur ? 
+
+### Contribute
+
+Don't hesitate ! There are several ways to contribute : 
+- Make a pull request related to a fix or a new feature
+- Create an issue to help me to patch/involves tools 
+- Help me to develop UI
+- Send me a mail with your feedback
+- etc ...
+
+### Donate
+
+**Dexcalibur is a personal and hobby project, so if you make a donation, then it helps me to spend more time to involve Dexcalibur tool and documentation.**
+
+[![Become a Patron!](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/bePatron?u=19568290)         [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RG4FCP5WA27AW&source=url)
+
+
+
+
 ## A. Getting started
 
 ## A. Installation

@@ -91,11 +91,9 @@ Assuming Dexcalibur does not provide (for the moment) features to analyse native
 
 TODO : write text
 
-
 #### D.1.B Hook manager
 
 TODO : write text
-
 
 #### D.1.C Dexcalibur's smali VM
 
@@ -125,7 +123,6 @@ Dexcalibur IR helps to read a cleaned version of bytcode by removing useless got
  - no CFG simplifying : conditions and incondtionnal jumps are rendered.
  - every move into a register are rendered
 
- 
 
 *2th level :* 
 
@@ -163,9 +160,18 @@ How VM handles invoke-* instruction ?
 
 #### D.1.D Application analyzers
 
-**Manifest analysis**
+**Manifest analysis (LIMITED)**
+
+Before the first run, the Android manifest of the application is parsed. Actually, anomalies into the manifest 
+such insecure configuration are really detected at this level. 
+
+The only purpose of Android manifest parsing is to populate other kind of analyzers.
 
 **Permission analysis**
+
+Every permissions extracted from the Manifest are listed and identified and compared to Android specification of the target Android API version.
+
+Dexcalibur provides - only in some case and depending of internal knowledge DB - a description of the permission purpose, the minimal Android API version, ... 
 
 **Activities analysis**
 
@@ -184,13 +190,30 @@ How VM handles invoke-* instruction ?
 
 **File access monitoring**
 
+#### D.1.F Collaborating features
+
+You cannot find multi-user menu ? Not a probleme, there is not a menu but minimalistic collaborative work can be achieve. 
+
+Dexcalibur runs a web server.  So, if several people are on the same network of this web server and if host firewall is well configured, you can be several to work on the same Dexcalibur instance.
+
+*Actual limitations are :*
+- **No authentication :** everybody into the network can send request to Dexcalibur instance and doing RCE the host through search engine.
+- **No identifying :** modifying are not tracked, so, if someone rename a symbol, you could not know who renamed it. Similar case : you are not able to know who created a specific hook.
+- **Single device instrumentation :** if several devices are connected to Dexcalibur's host, and even if you can choose the device to instrument, instrumentation and hook messages are linked to the last device selected. So, you cannot generate instrumention for several devices simultaneously.
+
 
 
 ## E. Github Contributors
 
+A special thanks to contributors : 
 
+- [ubamrein](https://github.com/ubamrein)
+- [jhscheer](https://github.com/jhscheer)
+- [eybisi](https://github.com/eybisi)
 
-## F. FAQ
+## F. Financial supporters
+
+## G. FAQ
 
 ### How to contribute to the dexcalibur ?
 
@@ -204,7 +227,7 @@ Documentation is available at [here (doc website)](https://frenchyeti.github.io/
 
 
 
-## G. Resources
+## H. Resources
 
 There is actually few documentation and training resources about Dexcalibur. If you successfully used Dexcalibur to win CTF challenge or to find vulnerability, i highly encourage you to share your experience. 
 
@@ -217,7 +240,7 @@ There is actually few documentation and training resources about Dexcalibur. If 
 * [Screenshots](https://github.com/FrenchYeti/dexcalibur/wiki)
 
 
-## H. They wrote something about Dexcalibur
+## I. They wrote something about Dexcalibur
 
 * [Awesome Frida](https://github.com/dweinstein/awesome-frida)
 * [Awesome OpenSource Security](https://github.com/CaledoniaProject/awesome-opensource-security)

@@ -2,6 +2,8 @@
 ![Docker Automated build](https://img.shields.io/docker/automated/frenchyeti/dexcalibur.svg?style=flat-square)
 [![Build Status](https://travis-ci.org/FrenchYeti/dexcalibur.svg?branch=master)](https://travis-ci.org/FrenchYeti/dexcalibur)
 ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2FFrenchYeti%2Fdexcalibur)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) 
+[![Maintainability](https://api.codeclimate.com/v1/badges/080688cfe119a255db70/maintainability)](https://codeclimate.com/github/FrenchYeti/dexcalibur/maintainability)
 
 # Dexcalibur
 
@@ -37,10 +39,6 @@ Don't hesitate ! There are several ways to contribute :
 
 [![Become a Patron!](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/bePatron?u=19568290)         [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RG4FCP5WA27AW&source=url)
 
-
-
-
-## A. Getting started
 
 ## A. Installation
 
@@ -211,6 +209,7 @@ A special thanks to contributors :
 - [ubamrein](https://github.com/ubamrein)
 - [jhscheer](https://github.com/jhscheer)
 - [eybisi](https://github.com/eybisi)
+- [monperrus](https://github.com/monperrus)
 
 ## F. Financial supporters
 
@@ -233,7 +232,7 @@ Documentation is available at [here (doc website)](https://frenchyeti.github.io/
 There is actually few documentation and training resources about Dexcalibur. If you successfully used Dexcalibur to win CTF challenge or to find vulnerability, i highly encourage you to share your experience. 
 
 
-* [Slides of Pass the SALT 2019 (PDF)](https://github.com/FrenchYeti/dexcalibur/wiki)
+* [Slides of Pass the SALT 2019 (PDF)](https://2019.pass-the-salt.org/files/slides/02-Dexcalibur.pdf)
 * [Youtube : demonstration](https://www.youtube.com/watch?v=2dGoolvMEpI)
 * [CLI User Guide](https://github.com/FrenchYeti/dexcalibur/wiki/CLI-User-guide)
 * [User Guide](https://github.com/FrenchYeti/dexcalibur/wiki/User-guide)

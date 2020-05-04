@@ -42,9 +42,41 @@ Don't hesitate ! There are several ways to contribute :
 
 ## A. Installation
 
-Follow installation guide : https://github.com/FrenchYeti/dexcalibur/wiki/Installation-guide
+### A.1 New install
+
+Ensure NodeJS >12 and Java are installed.
+
+Run command:
+```
+$  npm install -g dexcalibur
+```
+
+And start Dexcalibur with:
+```
+$  dexcalibur
+```
+Visit [http://127.0.0.1:8000](http://127.0.0.1:8000) and follow instruction.
+
+Your default port number 8000 is already in use ? Specify a custom port by using `--port=<number>` option:
+```
+$  dexcalibur --port=9999
+```
+
+Once install is done, restart Dexcalibur by doing (again)
+```
+$ dexcalibur
+``` 
+
+For more information, please visit [intallation guide](https://github.com/FrenchYeti/dexcalibur/wiki/Installation-guide)
 
 Or use Docker (DEPRECATED) ([See docker guide](https://github.com/FrenchYeti/dexcalibur/wiki/Use-the-Docker-image)):
+
+### A.2 Update
+
+You are using a previous version of Dexcalibur ? 
+
+Follow same steps than a new install, and when you should enter workspace path, enter your current workspace location. 
+
 
 
 ## B. Getting started
@@ -211,7 +243,67 @@ A special thanks to contributors :
 - [eybisi](https://github.com/eybisi)
 - [monperrus](https://github.com/monperrus)
 
-## F. Financial supporters
+## F. Troubleshoots
+
+### F.1 Dexcalibur continues to start into "install mode"
+
+Before to go deeper :
+- Ensure you are connected to Internet : Apktool and target platform are downloaded during install
+- Did you have tried to reinstall it by doing `dexcalibur --reinstall` command ? If no, try it.
+
+
+First, check if global settings have been saved into `<user_directory>/.dexcalibur/`
+```
+$ ls -la ~/.dexcalibur      
+
+total 8
+drwxr-xr-x   3 test_user  staff    96 29 avr 11:41 .
+drwxr-xr-x+ 87 test_user  staff  2784 29 avr 11:47 ..
+-rw-r--r--   1 test_user  staff   204 29 avr 11:41 config.json
+
+
+$ cat ~/.dexcalibur/config.json 
+
+{
+    "workspace":"/Users/test_user/dexcaliburWS3",
+    "registry":"https://github.com/FrenchYeti/dexcalibur-registry/raw/master/",
+    "registryAPI":"https://api.github.com/repos/FrenchYeti/dexcalibur-registry/contents/"
+}
+```
+
+
+Next, check if structure of Dexcalibur workspace is as following (content of `/api` folder may differs).
+```
+$ ls -la ~/dexcaliburWS/.dxc/*
+/Users/test_user/dexcaliburWS/.dxc/api:
+total 0
+drwxr-xr-x  3 test_user  staff   96 29 avr 11:41 .
+drwxr-xr-x  7 test_user  staff  224 29 avr 11:41 ..
+drwxr-xr-x  8 test_user  staff  256 29 avr 11:41 sdk_androidapi_29_google
+
+/Users/test_user/dexcaliburWS/.dxc/bin:
+total 34824
+drwxr-xr-x   4 test_user  staff       128 29 avr 11:41 .
+drwxr-xr-x   7 test_user  staff       224 29 avr 11:41 ..
+-rwxr-xr-x   1 test_user  staff  17661172 29 avr 11:41 apktool.jar
+drwxr-xr-x  18 test_user  staff       576 29 avr 11:41 platform-tools
+
+/Users/test_user/dexcaliburWS/.dxc/cfg:
+total 8
+drwxr-xr-x  3 test_user  staff   96 29 avr 11:41 .
+drwxr-xr-x  7 test_user  staff  224 29 avr 11:41 ..
+-rw-r--r--  1 test_user  staff  314 29 avr 11:41 config.json
+
+/Users/test_user/dexcaliburWS/.dxc/dev:
+total 0
+drwxr-xr-x  2 test_user  staff   64 29 avr 11:41 .
+drwxr-xr-x  7 test_user  staff  224 29 avr 11:41 ..
+
+/Users/test_user/dexcaliburWS/.dxc/tmp:
+total 0
+drwxr-xr-x  2 test_user  staff   64 29 avr 11:41 .
+drwxr-xr-x  7 test_user  staff  224 29 avr 11:41 ..
+```
 
 ## G. FAQ
 

@@ -9,19 +9,19 @@
 ![Dexcalibur banner](https://github.com/FrenchYeti/dexcalibur-doc/raw/master/pictures/github_banner_v2.png)
 # Dexcalibur
 
-Dexcalibur is an Android reverse engineering platform focus on instrumentation and relaying on dynamic analysis to improve static analysis heuristics. It aims automate boring tasks related to dynamic instrumentation, such as :
-* Write hook code
-* Manage lot of hook message
-* Search interesting thinks to hook
+Dexcalibur is an Android reverse engineering platform focus on instrumentation automation. Its particularity is to use dynamic analysis to improve static analysis heuristics. It aims automate boring tasks related to dynamic instrumentation, such as :
+* Decompile/disass intercepted bytecode at runtime
+* Write hook code and Manage lot of hook message
+* Search interesting pattern / things to hook
 * Process data gathered by hook (dex file, invoked method, class loader, ...)
 * and so ...
-But not only that, because Dexcalibur has own static analysis engine and it is able to execute piece of smali.  
+But not only that, because Dexcalibur has own static analysis engine and it is able to execute partial piece of smali.  
 
-Official documentation is available [here (wiki)](https://github.com/FrenchYeti/dexcalibur/wiki) and [here (website - work in progress)](https://frenchyeti.github.io/dexcalibur-doc/). 
+Official documentation is available [here (website - work in progress)](https://frenchyeti.github.io/dexcalibur-doc/). 
 
-See the latest news here : [https://github.com/FrenchYeti/dexcalibur/wiki/News](https://github.com/FrenchYeti/dexcalibur/wiki/News)
+See the latest news here : [http://docs.dexcalibur.org/News.html](http://docs.dexcalibur.org/News.html) 
 
-Show Dexcalibur videos : [Less than 1 minute to hook 61 methods ? Not a problem. \(youtube\)](https://www.youtube.com/watch?v=2dGoolvMEpI)
+Show Dexcalibur demo videos : [Demo: Less than 1 minute to hook 61 methods ? Not a problem. \(youtube\)](https://www.youtube.com/watch?v=2dGoolvMEpI)
 
 
 ## How to support Dexcalibur ? 

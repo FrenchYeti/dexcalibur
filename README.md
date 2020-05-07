@@ -71,12 +71,23 @@ For more information, please visit [intallation guide](https://github.com/French
 
 Or use Docker (DEPRECATED) ([See docker guide](https://github.com/FrenchYeti/dexcalibur/wiki/Use-the-Docker-image)):
 
-### A.2 Update
+### A.2 Update 
+
+#### From version <= 0.6.x
 
 You are using a previous version of Dexcalibur ? 
 
 Follow same steps than a new install, and when you should enter workspace path, enter your current workspace location. 
 
+
+#### From version >= 0.7
+
+Just by doing:
+```
+$  npm install -g dexcalibur
+``` 
+
+Existing configuration and workspace will be detected automatically. 
 
 
 ## B. Getting started

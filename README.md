@@ -92,23 +92,6 @@ $  npm install -g dexcalibur
 Existing configuration and workspace will be detected automatically. 
 
 
-## B. Getting started
-
-If you expect to analyze an application already installed on a physical device, then connect the device to your computer, run the following command, and open your browser (localhost:<webapp_port>) : 
-```
-./dexcalibur --app=<appname> --port=<webapp_port> --pull
-```
-
-If you have an APK file to analyze :
-```
-./dexcalibur --app=<appname> --port=<webapp_port> --apk=<path_to_apk>
-``` 
-
-If you have already scanned the app, just exec the following command (without --pull) and open your browser (localhost:<webapp_port>)  :
-```
-./dexcalibur --app=<appname> --port=<webapp_port>
-```
-
 
 
 ## C. Screenshots

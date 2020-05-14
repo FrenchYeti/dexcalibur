@@ -26,7 +26,7 @@ Show Dexcalibur demo videos : [Demo: Less than 1 minute to hook 61 methods ? Not
 
 ## How to support Dexcalibur ? 
 
-### Contribute
+**Contribute !**
 
 Don't hesitate ! There are several ways to contribute : 
 - Make a pull request related to a fix or a new feature
@@ -193,7 +193,7 @@ The only purpose of Android manifest parsing is to populate other kind of analyz
 
 Every permissions extracted from the Manifest are listed and identified and compared to Android specification of the target Android API version.
 
-Dexcalibur provides - only in some cased and depending of internal knowledge DB - a description of the permission purpose, the minimal Android API version, ... 
+Dexcalibur provides - only in some case - a description of the permission purpose, the minimal Android API version, ... 
 
 **Activities analysis**
 

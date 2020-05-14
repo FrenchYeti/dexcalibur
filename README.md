@@ -35,12 +35,6 @@ Don't hesitate ! There are several ways to contribute :
 - Send me a mail with your feedback
 - etc ...
 
-### Donate
-
-**Dexcalibur is a personal and hobby project, so if you make a donation, then it helps me to spend more time to involve Dexcalibur tool and documentation.**
-
-[![Become a Patron!](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/bePatron?u=19568290)         [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RG4FCP5WA27AW&source=url)
-
 
 ## A. Installation
 
@@ -185,7 +179,8 @@ How VM handles invoke-* instruction ?
 6. Return is push into stack memory
 7. Caller give flow control
 
-#### D.1.D Application analyzers
+#### D.1.D Application Topology  analyzers
+
 
 **Manifest analysis (LIMITED)**
 
@@ -198,7 +193,7 @@ The only purpose of Android manifest parsing is to populate other kind of analyz
 
 Every permissions extracted from the Manifest are listed and identified and compared to Android specification of the target Android API version.
 
-Dexcalibur provides - only in some case and depending of internal knowledge DB - a description of the permission purpose, the minimal Android API version, ... 
+Dexcalibur provides - only in some cased and depending of internal knowledge DB - a description of the permission purpose, the minimal Android API version, ... 
 
 **Activities analysis**
 

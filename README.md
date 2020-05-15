@@ -40,7 +40,10 @@ Don't hesitate ! There are several ways to contribute :
 
 ### A.1 New install
 
-Ensure NodeJS >12 and Java are installed.
+Ensure following dependencies are installed :
+- NodeJS 12.x LTS (upper non-LTS versions can cause issues during installation if there is not prebuilt binaries for frida-node, see [Issue #27](https://github.com/FrenchYeti/dexcalibur/issues/27). Else, you can rebuild frida-node) 
+- Java >= 8
+
 
 Run command:
 ```

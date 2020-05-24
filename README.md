@@ -301,6 +301,33 @@ drwxr-xr-x  7 test_user  staff  224 29 avr 11:41 ..
 
 ## G. FAQ
 
+### Why  a new device ?
+
+You need to enroll the target device before to be able to use it. 
+During enrollment Dexcalibur gather device metadata and push a compatible version of Frida server.
+
+Such metadata are used to select right frida-server and frida-gadget targets.
+
+### How to use an emulator instead of a physical device ?
+
+Dexcalibur version < v0.7 was not able to detect automatically emulated device and use it due to an incomplete ADB output parsing.
+
+Since version >= v0.7, once your virtual device is running, go to `/splash.html` or click on `DEXCALIBUR` into navigation bar.
+Click on `Device Manager` button into left menu, and click the `Refresh` button at top of array.
+
+You should have a row starting by the ADB ID of your virtual device.
+
+### How to use a device over TCP ?
+
+First, as any target device, you should enroll it.
+
+Click `Connect over TCP ...` to add a new device over TCP or to connect an enrolled device over TCP.
+
+If the device has never been enrolled, so enrollment will be perform through TCP. 
+In some case, connection over TCP is slower than over USB. So enrollement can take additional time.
+
+If the device has been enrolled over USB, so the new prefered transport type for this device becomes TCP.
+
 ### How to contribute to the dexcalibur ?
 
 Create a pull request on this repository or create an issue.

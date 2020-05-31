@@ -301,12 +301,35 @@ drwxr-xr-x  7 test_user  staff  224 29 avr 11:41 ..
 
 ## G. FAQ
 
-### Why  a new device ?
+### My device not appears when into device list
+
+If you use a physical device connected over USB, ensure *developper mode* and *USB debugging* are enabled.  
+
+If you use a virtual device, go to `/splash.html`,  select `Device Manager`,  click `Connect over TCP ...` and follow instructions. If you don't know IP address of your device, let Dexcalibur detect it by checking box `automatic configuration`.
+
+
+### USB debugging is enabled, but my device not appears when into device list
+
+ - Connect/disconnect USB and ensure your computer is allowed. 
+ - Select file transfert
+
+### Why enroll a new device ?
 
 You need to enroll the target device before to be able to use it. 
 During enrollment Dexcalibur gather device metadata and push a compatible version of Frida server.
 
 Such metadata are used to select right frida-server and frida-gadget targets.
+
+#### My device is listed into Device Manager, but it cannot be enrolled
+
+If a red exclamation mark `!` appears on a line into device list, then your desktop is not allowed by device. You probably need to confirm 
+
+If your device is listed into DeviceManager and the column `online` is checked, then click `enroll` 
+
+
+#### G.1 My device is listed into Device Manager
+
+If your device is listed into DeviceManager and the column `online` is checked, then click `enroll` 
 
 ### How to use an emulator instead of a physical device ?
 

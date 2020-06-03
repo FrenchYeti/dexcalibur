@@ -72,9 +72,9 @@ Once install is done, restart Dexcalibur by killing it and doing (again)
 $ dexcalibur
 ``` 
 
-For more information, please visit [intallation guide](https://docs.dexcalibur.org/Installation-guide)
+For more information, please visit [intallation guide](http://docs.dexcalibur.org/Installation-guide)
 
-Or use Docker (DEPRECATED) ([See docker guide](https://docs.dexcalibur.org/Use-the-Docker-image)):
+Or use Docker (DEPRECATED) ([See docker guide](http://docs.dexcalibur.org/Use-the-Docker-image)):
 
 ### A.2 Update 
 

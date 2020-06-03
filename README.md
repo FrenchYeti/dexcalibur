@@ -56,19 +56,25 @@ $  dexcalibur
 ```
 Visit [http://127.0.0.1:8000](http://127.0.0.1:8000) and follow instruction.
 
-Your default port number 8000 is already in use ? Specify a custom port by using `--port=<number>` option:
-```
-$  dexcalibur --port=9999
-```
+Your default port number 8000 is already in use ? Specify a custom port by using `--port=<number>` like `$  dexcalibur --port=9999`
 
-Once install is done, restart Dexcalibur by doing (again)
+
+Fill the form with the location of your workspace and default listening port, and submit it. 
+The workspace will contain a folder for each application you reverse using Dexcalibur.  
+![Install configuration](https://github.com/FrenchYeti/dexcalibur-doc/raw/master/pictures/dxc_installer-step1.png)
+
+Dexcalibur will create the workspace if the folder not exists. A standalone version of android platform tools, APKtool, and more will be downloaded into this workspace.
+![Running install](https://github.com/FrenchYeti/dexcalibur-doc/raw/master/pictures/dxc_installer-step2.png)
+
+
+Once install is done, restart Dexcalibur by killing it and doing (again)
 ```
 $ dexcalibur
 ``` 
 
-For more information, please visit [intallation guide](https://github.com/FrenchYeti/dexcalibur/wiki/Installation-guide)
+For more information, please visit [intallation guide](https://docs.dexcalibur.org/Installation-guide)
 
-Or use Docker (DEPRECATED) ([See docker guide](https://github.com/FrenchYeti/dexcalibur/wiki/Use-the-Docker-image)):
+Or use Docker (DEPRECATED) ([See docker guide](https://docs.dexcalibur.org/Use-the-Docker-image)):
 
 ### A.2 Update 
 

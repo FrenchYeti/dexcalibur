@@ -1,9 +1,9 @@
 ![npm dependencies](https://david-dm.org/frenchyeti/dexcalibur.svg)
-![npm](https://img.shields.io/npm/dm/dexcalibur)
+![npm](https://img.shields.io/npm/dm/dexcalibur) ****
 ![npm](https://img.shields.io/npm/v/dexcalibur?color=green)
 ![Docker Automated build](https://img.shields.io/docker/automated/frenchyeti/dexcalibur.svg?style=flat-square)
 [![Build Status](https://travis-ci.org/FrenchYeti/dexcalibur.svg?branch=master)](https://travis-ci.org/FrenchYeti/dexcalibur)
-![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2FFrenchYeti%2Fdexcalibur)
+![Twitter Follow](https://img.shields.io/twitter/follow/frenchyeti?style=social)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) 
 [![Maintainability](https://api.codeclimate.com/v1/badges/080688cfe119a255db70/maintainability)](https://codeclimate.com/github/FrenchYeti/dexcalibur/maintainability)
 
@@ -369,9 +369,13 @@ Create a pull request on [dexcalibur-doc](https://github.com/FrenchYeti/dexcalib
 
 Documentation is available at [here (doc website)](https://frenchyeti.github.io/dexcalibur-doc/) and [here (wiki)](https://github.com/FrenchYeti/dexcalibur/wiki/News)
 
+## H. Sponsors
 
+| ![https://www.jetbrains.com/?from=dexcalibur](https://github.com/FrenchYeti/dexcalibur-doc/raw/master/pictures/jetbrains_logo.png) |
+| --- |
+| They offered a license for All Products <3 |
 
-## H. Resources
+## I. Resources
 
 There is actually few documentation and training resources about Dexcalibur. If you successfully used Dexcalibur to win CTF challenge or to find vulnerability, i highly encourage you to share your experience. 
 
@@ -384,7 +388,7 @@ There is actually few documentation and training resources about Dexcalibur. If 
 * [Screenshots](https://github.com/FrenchYeti/dexcalibur/wiki)
 
 
-## I. They wrote something about Dexcalibur
+## J. They wrote something about Dexcalibur
 
 * [Awesome Frida](https://github.com/dweinstein/awesome-frida)
 * [Awesome OpenSource Security](https://github.com/CaledoniaProject/awesome-opensource-security)

@@ -43,8 +43,9 @@ Don't hesitate ! There are several ways to contribute :
 ### A.1 New install
 
 Ensure following dependencies are installed :
-- NodeJS 12.x LTS (upper non-LTS versions can cause issues during installation if there is not prebuilt binaries for frida-node, see [Issue #27](https://github.com/FrenchYeti/dexcalibur/issues/27). Else, you can rebuild frida-node) 
+- NodeJS 12.x LTS (upper non-LTS versions can cause issues during installation if there is not prebuilt binaries for frida-node, see [Issue #27](https://github.com/FrenchYeti/dexcalibur/issues/27). Else, you can rebuild frida-node). To install a specific version, [NVM](https://github.com/nvm-sh/nvm) can be useful: e.g. `nvm install 12.20.0`.
 - Java >= 8
+- Frida tools on the host (typically using `pip install frida-tools`)
 
 
 Run command:

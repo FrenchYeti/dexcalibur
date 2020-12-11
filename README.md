@@ -1,5 +1,5 @@
 ![npm dependencies](https://david-dm.org/frenchyeti/dexcalibur.svg)
-![npm](https://img.shields.io/npm/dm/dexcalibur) ****
+![npm](https://img.shields.io/npm/dm/dexcalibur)
 ![npm](https://img.shields.io/npm/v/dexcalibur?color=green)
 ![Docker Automated build](https://img.shields.io/docker/automated/frenchyeti/dexcalibur.svg?style=flat-square)
 [![Build Status](https://travis-ci.org/FrenchYeti/dexcalibur.svg?branch=master)](https://travis-ci.org/FrenchYeti/dexcalibur)
@@ -38,65 +38,9 @@ Don't hesitate ! There are several ways to contribute :
 - etc ...
 
 
-## A. Installation
+## A. Install / Update 
 
-### A.1 New install
-
-Ensure following dependencies are installed :
-- NodeJS 12.x LTS (upper non-LTS versions can cause issues during installation if there is not prebuilt binaries for frida-node, see [Issue #27](https://github.com/FrenchYeti/dexcalibur/issues/27). Else, you can rebuild frida-node) 
-- Java >= 8
-
-
-Run command:
-```
-$  npm install -g dexcalibur
-```
-
-And start Dexcalibur with:
-```
-$  dexcalibur
-```
-Visit [http://127.0.0.1:8000](http://127.0.0.1:8000) and follow instruction.
-
-Your default port number 8000 is already in use ? Specify a custom port by using `--port=<number>` like `$  dexcalibur --port=9999`
-
-
-Fill the form with the location of your workspace and default listening port, and submit it. 
-The workspace will contain a folder for each application you reverse using Dexcalibur.  
-![Install configuration](https://github.com/FrenchYeti/dexcalibur-doc/raw/master/pictures/dxc_installer-step1.png)
-
-Dexcalibur will create the workspace if the folder not exists. A standalone version of android platform tools, APKtool, and more will be downloaded into this workspace.
-![Running install](https://github.com/FrenchYeti/dexcalibur-doc/raw/master/pictures/dxc_installer-step2.png)
-
-
-Once install is done, restart Dexcalibur by killing it and doing (again)
-```
-$ dexcalibur
-``` 
-
-For more information, please visit [intallation guide](http://docs.dexcalibur.org/Installation-guide)
-
-Or use Docker (DEPRECATED) ([See docker guide](http://docs.dexcalibur.org/Use-the-Docker-image)):
-
-### A.2 Update 
-
-#### From version <= 0.6.x
-
-You are using a previous version of Dexcalibur ? 
-
-Follow same steps than a new install, and when you should enter workspace path, enter your current workspace location. 
-
-
-#### From version >= 0.7
-
-Just by doing:
-```
-$  npm install -g dexcalibur
-``` 
-
-Existing configuration and workspace will be detected automatically. 
-
-
+[Follow this installation guide to install Dexcalibur or to update it](https://github.com/FrenchYeti/dexcalibur-doc/blob/master/Installation-guide.md)
 
 
 ## C. Screenshots
@@ -244,6 +188,7 @@ A special thanks to contributors :
 - [jhscheer](https://github.com/jhscheer)
 - [eybisi](https://github.com/eybisi)
 - [monperrus](https://github.com/monperrus)
+- [cryptax](https://github.com/cryptax)
 
 ## F. Troubleshoots
 

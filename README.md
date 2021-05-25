@@ -348,6 +348,7 @@ Documentation is available at [here (doc website)](https://frenchyeti.github.io/
 There is actually few documentation and training resources about Dexcalibur. If you successfully used Dexcalibur to win CTF challenge or to find vulnerability, i highly encourage you to share your experience. 
 
 * [THCon 2020](https://www.youtube.com/watch?v=VRVV23glm_o)
+* [SSTIC 2020](https://www.sstic.org/2020/presentation/dexcalibur_hook_it_yourself/)
 * [Slides of Pass the SALT 2019 (PDF)](https://2019.pass-the-salt.org/files/slides/02-Dexcalibur.pdf)
 * [Youtube : demonstration](https://www.youtube.com/watch?v=2dGoolvMEpI)
 * [CLI User Guide](https://github.com/FrenchYeti/dexcalibur/wiki/CLI-User-guide)

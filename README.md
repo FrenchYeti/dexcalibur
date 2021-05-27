@@ -8,7 +8,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/080688cfe119a255db70/maintainability)](https://codeclimate.com/github/FrenchYeti/dexcalibur/maintainability)
 
 
-![Dexcalibur banner](https://github.com/FrenchYeti/dexcalibur-doc/raw/master/pictures/github_banner_v2.png)
+![Dexcalibur banner](https://raw.githubusercontent.com/FrenchYeti/dexcalibur-doc/master/pictures/v1.0.0a/Dexcalibur-for-Github2.jpg)
 # Dexcalibur
 
 Dexcalibur is an Android reverse engineering platform focus on instrumentation automation. Its particularity is to use dynamic analysis to improve static analysis heuristics. It aims automate boring tasks related to dynamic instrumentation, such as :

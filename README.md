@@ -22,7 +22,7 @@ But not only that, because Dexcalibur has own static analysis engine and it is a
 
 Do you want share something or do you need some help ? Join our official chat :
 
-![https://discord.gg/pfB7Ez34Ts](https://discordapp.com/api/guilds/852565889386676246/widget.png?style=banner2)
+[![https://discord.gg/pfB7Ez34Ts](https://discordapp.com/api/guilds/852565889386676246/widget.png?style=banner2)](https://discord.gg/pfB7Ez34Ts)
 
 
 Official documentation is available [here (website - work in progress)](https://frenchyeti.github.io/dexcalibur-doc/). 

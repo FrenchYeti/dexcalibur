@@ -51,7 +51,21 @@ Don't hesitate ! There are several ways to contribute :
 Go to [Install doc](https://frenchyeti.github.io/dexcalibur-doc/Installation-guide.html)
 
 
-### A.2 Update 
+### A.2 Launch dexcalibur
+
+**For Linux and MacOS**
+
+NPM Install : If Dexcalibur has been installed globaly using NPM (`-g` option), then Dexcalibur can be launch from terminal by doing `$ dexcalibur`, else the location it can be launch by `$ node $(node root -g dexcalibur)/dexcalibur/dexcalibur.js`.
+
+Install from source : from `dexcalibur` folder, run `$ dexcalibur` or `$ node dexcalibur.js`. 
+
+**For Windows**
+
+NPM Install : Event if Dexcalibur is installed globaly using NPM (`-g` option), Dexcalibur must be launched from terminal by running the following command from a terminal `node <NPM_ROOT>/dexcalibur/dexcalibur.js`.
+
+Install from source : from `dexcalibur` folder, into the terminal, run the command  `node dexcalibur.js`. 
+
+### A.3 Update 
 
 #### From version <= 0.6.x
 

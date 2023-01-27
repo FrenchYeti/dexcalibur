@@ -52,6 +52,12 @@ Don't hesitate ! There are several ways to contribute :
 
 Go to [Install doc](https://frenchyeti.github.io/dexcalibur-doc/Installation-guide.html)
 
+Alternative: use Docker
+
+- on your host, install `adb` (and an Android emulator if appropriate)
+- `docker-compose build android-dexcalibur`
+- `docker run --rm -it --net=host -v /tmp/dexcalibur:/shared -p 8000:8000 dexcalibur:2023.01 /bin/bash`
+
 
 ### A.2 Launch dexcalibur
 

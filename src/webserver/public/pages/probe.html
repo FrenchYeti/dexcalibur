@@ -486,10 +486,10 @@
                 { 
                     data: 'name' ,
                     render: function(data, type, row, meta ){
-                        return (row.name!=null)? htmlEncode(row.name) : '[Missing]';
+                        return (row.name!=null)? "<b>"+row.parentID + "</b>: " + htmlEncode(row.name) : '[Missing]';
                     }
                 },
-                { 
+                { // status column 
                     render: function(data, type, row, meta ){
                        // console.log(row);
                      //   let b= '<div class="custom-control custom-switch">'
@@ -516,7 +516,7 @@
                             return '<a  class="badge badge-pill badge-info">edited</a>';
                         }*/
                     }
-                },{
+                },{ // trash colum
                     render: function(data, type, row, meta ){
                         return '<span style="margin-left:1em;font-size:1.2em;" class="badge badge-pîll badge-action badge-danger probe-del"  hookid="'+row.id+'" data-toggle="tooltip" data-placement="bottom" title="remove"><span class="fa fa-trash"></span></a>';
 

@@ -112,7 +112,7 @@ export class CompositionAnalyzer {
         };
     }
 
-    private _isPartOfAppNamespace(pStr:string, pExpectedOffset= -1):boolean {
+    private async _isPartOfAppNamespace(pStr:string, pExpectedOffset= -1):Promise<boolean> {
         let isPart = false;
         let ns:string;
         switch (this.ctx.os) {
@@ -176,27 +176,24 @@ export class CompositionAnalyzer {
         return chunks;
     }
 
-    async extractChunks():Promise<BomCandidateChunk[]> {
+    async extractChunks():Promise<void> {
         if(this.ctx==null){
             throw new Error("Cannot perform binary composition analysis: context is middimg.");
         }
 
         switch (this.ctx.os){
             case OperatingSystem.ANDROID:
-                return [
-                    ...await this._extractAndroidComponentUids(),
-                    ...await this._extractLibraryParts(),
-                    ...await this._extractAndroidPackages(),
-                ];
+                await this._extractAndroidComponentUids();
+                await this._extractLibraryParts();
+                await this._extractAndroidPackages();
+                break;
             case OperatingSystem.IOS:
-                return [
-                    ...await this._extractIosComponentUids(),
-                    ...await this._extractLibraryParts(),
-                ];
+                await this._extractIosComponentUids();
+                await this._extractLibraryParts();
+                break;
             case OperatingSystem.LINUX:
                 break;
         }
-        return [];
     }
 
     private async _extractLibraryParts() {

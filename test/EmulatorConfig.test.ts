@@ -3,7 +3,7 @@ import {EmulatorConfig} from '../src/emulator/EmulatorConfig.js';
 import {MemoryAddress} from '../src/memory/MemoryAddress.js';
 import {MemoryBlock} from '../src/memory/MemoryBlock.js';
 
-describe('EmulatorConfig alignment and sessions', () => {
+describe('EmulatorConfig memory alignment', () => {
     it('rounds memory size outward while preserving direction', () => {
         const config = new EmulatorConfig();
         const ascending = MemoryBlock.fromAddressRange(new MemoryAddress(0x100n), new MemoryAddress(0x101n));
@@ -19,13 +19,5 @@ describe('EmulatorConfig alignment and sessions', () => {
         const block = MemoryBlock.fromAddressRange(new MemoryAddress(0n), new MemoryAddress(size));
         config.addMemory(block, {align: 16});
         expect(block.end.address).to.equal(((size + 15n) / 16n) * 16n);
-    });
-    it('retains both absolute and relative session CPU contexts', () => {
-        const config = new EmulatorConfig();
-        const context = [];
-        config.addSession(new MemoryAddress(1n), [], context);
-        config.addRelativeSession(2, [], context);
-        expect(config.sessions[0].ctx).to.equal(context);
-        expect(config.sessions[1].ctx).to.equal(context);
     });
 });

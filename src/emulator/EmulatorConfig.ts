@@ -84,7 +84,6 @@ export class EmulatorConfig {
         this.sessions.push({
             start: pStart,
             ends: pEnds,
-            ctx: pCtx,
         });
     }
 
@@ -92,7 +91,6 @@ export class EmulatorConfig {
         this.sessions.push({
             start: this.baseAddress.add(pStart),
             ends: pEnds.map( (x:number)=> this.baseAddress.add(x)),
-            ctx: pCtx,
         });
     }
 

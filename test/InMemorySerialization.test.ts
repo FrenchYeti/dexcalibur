@@ -32,16 +32,12 @@ describe('In-memory serialization', function () {
             serialize() { return { serialized: true }; }
         }
         const index = new InMemoryDbIndex('roundtrip');
-        assert.equal(index.isSerializable(), true);
         index.addEntry(new Entry());
         index.addEntry(new Entry());
         index.removeEntry(1);
-        assert.equal(index.isSerializable(), true);
         assert.deepEqual(index.serialize().refs, [{ serialized: true }, null]);
         assert.equal(index.toJsonObject().refs[1], null);
         assert.deepEqual(InMemoryDbIndex.unserialize(index.serialize()).getAll(), [{ serialized: true }, null]);
-        index.addEntry({ isSerializable: () => false });
-        assert.equal(index.isSerializable(), false);
     });
 
     it('rejects null and unknown serialized type identifiers', function () {

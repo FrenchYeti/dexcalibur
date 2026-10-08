@@ -188,8 +188,11 @@ export default class InMemoryDbIndex implements IDbIndex
 
 
     isSerializable():boolean{
-        return this.refs.every(ref => ref == null
-            || (typeof ref.isSerializable === 'function' && ref.isSerializable()));
+        let ret:boolean = false;
+        for(let i:number=0; i<this.refs.length ; i++)
+            ret = ret && this.refs[i].isSerializable();
+
+        return ret;
     }
 
     static unserialize(serialized_obj:any){

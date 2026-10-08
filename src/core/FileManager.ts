@@ -109,7 +109,7 @@ export class FileManager {
         if(files.length==0 ){
             throw EngineDatabaseException.FILE_NOT_FOUND_IN_BUCKET(pBucket, pFileID);
         }
-        if(files.length>1){
+        if(files.length>0){
             throw EngineDatabaseException.FILE_NOT_UNIQUE_IN_BUCKET(pBucket, pFileID);
         }
 

@@ -180,9 +180,9 @@ export default class InMemoryDbCollection implements IDbCollection
 
         for(let i in this.values){
 
-            if(this.values[i] != null && typeof this.values[i].serialize === 'function')
+            if(typeof this.values[i].serialize === 'function')
                 o.values[i]=this.values[i].serialize();
-            else if(this.values[i] != null && typeof this.values[i].toJsonObject === 'function')
+            if(typeof this.values[i].toJsonObject === 'function')
                 o.values[i]=this.values[i].toJsonObject();
             else
                 o.values[i]=this.values[i];

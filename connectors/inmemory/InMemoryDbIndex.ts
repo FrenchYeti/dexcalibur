@@ -219,10 +219,9 @@ export default class InMemoryDbIndex implements IDbIndex
         o.refs = [];
 
         for(let i:number=0; i<this.refs.length; i++){
-            if(this.refs[i] != null && typeof this.refs[i].isSerializable === 'function'
-                && this.refs[i].isSerializable() === true && typeof this.refs[i].serialize === 'function'){
+            if(this.refs[i].hasOwnProperty('isSerializable') && (this.refs[i].isSerializable() === true)){
                 o.refs.push(this.refs[i].serialize());
-            }else if(this.refs[i] != null && typeof this.refs[i].toJsonObject === 'function')
+            }else if(typeof this.refs[i].toJsonObject === 'function')
                 o.refs.push(this.refs[i].toJsonObject());
             else
                 o.refs.push(this.refs[i]);

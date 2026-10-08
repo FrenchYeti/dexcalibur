@@ -117,7 +117,11 @@ export default class InMemoryDbCollection implements IDbCollection
 
 
     removeEntry(key: any): boolean {
-        return (delete this.values[key]);
+        if(Object.prototype.hasOwnProperty.call(this.values, key)){
+            delete this.values[key];
+            this.ctr--;
+        }
+        return true;
     }
 
     toJsonObject():any{

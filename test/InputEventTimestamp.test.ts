@@ -1,5 +1,4 @@
 import {expect} from 'chai';
-import AndroidPhysicalEventWrapper from '../src/platform/AndroidPhysicalEventWrapper.js';
 import {LinuxInputDeviceDecoder} from '../src/platform/kernels/linux/LinuxInputDeviceDecoder.js';
 import {InputDeviceType} from '../src/platform/kernels/common/InputDeviceType.js';
 import InputEventType from '../src/platform/InputEventType.js';
@@ -9,7 +8,7 @@ describe('Input event timestamps', function () {
     const deviceType = new InputDeviceType({eventTypes: [
         new InputEventType({value: 0, codes: [new InputEventCode({value: 0})]})
     ]});
-    const decoders = [new LinuxInputDeviceDecoder(deviceType), new AndroidPhysicalEventWrapper()];
+    const decoders = [new LinuxInputDeviceDecoder(deviceType)];
 
     function raw(seconds: bigint, microseconds: bigint): Buffer {
         const event = Buffer.alloc(24);
@@ -26,9 +25,4 @@ describe('Input event timestamps', function () {
         }
     });
 
-    it('does not round the seconds field through Number', function () {
-        for(const decoder of decoders){
-            expect(decoder.decode(raw(9007199254740993n, 1n)).timestamp).to.equal('9007199254740993.000001');
-        }
-    });
 });

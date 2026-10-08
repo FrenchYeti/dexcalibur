@@ -46,7 +46,7 @@ export class CompositionAnalyzer {
     ctx:Nullable<DexcaliburProject> = null;
 
     constructor(pOptions:CompositionAnalyzerOpts) {
-        for(let i in pOptions) this[pOptions[i]] = pOptions[i];
+        for(let i in pOptions) this[i] = pOptions[i];
     }
 
     setContext(pContext:DexcaliburProject) {

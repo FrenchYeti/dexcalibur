@@ -131,7 +131,7 @@ export default class InMemoryDbCollection implements IDbCollection
         o.ctr = this.ctr;
         o.values = {};
         for(let i in this.values){
-            if(this.values[i] != null && typeof this.values[i].toJsonObject === 'function')
+            if(typeof this.values[i].toJsonObject === 'function')
                 o.values[i]=this.values[i].toJsonObject();
             else
                 o.values[i]=this.values[i];

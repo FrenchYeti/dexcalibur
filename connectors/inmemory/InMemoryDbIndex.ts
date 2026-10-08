@@ -174,7 +174,7 @@ export default class InMemoryDbIndex implements IDbIndex
         o.name = this.name;
         o.refs = [];
         for(let i:number=0; i<this.refs.length; i++){
-            if(this.refs[i] != null && typeof this.refs[i].toJsonObject  === 'function'){
+            if(typeof this.refs[i].toJsonObject  === 'function'){
                 o.refs[i] = this.refs[i].toJsonObject()
             }else{
                 o.refs[i] = this.refs[i];

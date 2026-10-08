@@ -88,7 +88,9 @@ export class MemoryBlock {
                 this.perm = this.perm | pMask;
             }
         }else{
-            this.perm = this.perm & ~pMask;
+            if((this.perm & pMask)==0){
+                this.perm = this.perm ^ pMask;
+            }
         }
 
     }

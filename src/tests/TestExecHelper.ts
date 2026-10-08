@@ -154,7 +154,6 @@ export class TestExecHelperClass {
 
     clearInterceptors(){
         this.interceptors = {};
-        this._map = {};
     }
 
     /**

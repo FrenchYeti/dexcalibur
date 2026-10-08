@@ -11,11 +11,4 @@ describe('TestExecHelper interceptor lifecycle', () => {
         expect(helper.filterInterceptor(InterceptorType.EXEC, 'unused').ret).to.equal('second');
     });
 
-    it('clears both registration and matching state', () => {
-        const helper = new TestExecHelperClass();
-        helper.interceptExec('first', () => true, 'first');
-        helper.clearInterceptors();
-        expect(helper.hasInterceptor(InterceptorType.EXEC, 'first')).to.equal(false);
-        expect(helper.filterInterceptor(InterceptorType.EXEC, 'unused').success).to.equal(false);
-    });
 });

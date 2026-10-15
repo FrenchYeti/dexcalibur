@@ -37,10 +37,6 @@ if(schedulerPpts.files.length===0){
     parentPort.postMessage({cmd: 'complete', threadID: schedulerPpts.threadID, data: null});
     process.exit(0);
 }
-if(!Number.isInteger(schedulerPpts.pool_size) || schedulerPpts.pool_size<=0){
-    parentPort.postMessage({cmd: 'log', success: false, threadID: schedulerPpts.threadID, data: 'Invalid worker pool size'});
-    process.exit(1);
-}
 
 const pool:Record<string,Worker> = {};
 const freeWorker:string[] = [];

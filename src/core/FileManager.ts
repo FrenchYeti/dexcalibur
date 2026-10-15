@@ -22,10 +22,12 @@
 import DexcaliburEngine from "../DexcaliburEngine.js";
 import {GridFSBucket, GridFSBucketReadStream} from "mongodb";
 import {IFileDatabase} from "./commons.js";
-import {Readable} from "stream";
-import {pipeline} from "stream/promises";
+import {Readable, pipeline as streamPipeline} from "stream";
+import {promisify} from "util";
 import * as _fs_ from "fs";
 import {EngineDatabaseException} from "../errors/EngineDatabaseException.js";
+
+const pipeline = promisify(streamPipeline);
 
 /**
  * File manager help to implement a database-backed filesystem

@@ -10,10 +10,20 @@ const enums = requestAst.statements.filter(x => ts.isEnumDeclaration(x) && ['Ope
 const backendSource = readFileSync(new URL('../connectors/inmemory/InMemoryMerlinBackend.ts', import.meta.url), 'utf8');
 const backendAst = ts.createSourceFile('backend.ts', backendSource, ts.ScriptTarget.Latest, true);
 const cls = backendAst.statements.find(x => ts.isClassDeclaration(x) && x.name?.text === 'InMemoryMerlinBackend');
-const emitted = ts.transpileModule(enums + '\n' + cls.getText(backendAst).replace(/^export /, ''), {compilerOptions: {target: ts.ScriptTarget.ES2022}}).outputText;
-// Actual complete backend class and request enums; isolate their existing import
-// cycle. These fixtures do not establish whole-module/database acceptance.
-const {Backend, OperationType} = new Function('Util', emitted + '\nreturn {Backend: InMemoryMerlinBackend, OperationType};')(Util);
+const requestClass = requestAst.statements.find(x => ts.isClassDeclaration(x) && x.name?.text === 'MerlinSearchRequest');
+function declaration(file: string, name: string) {
+    const source = readFileSync(new URL(file, import.meta.url), 'utf8');
+    const ast = ts.createSourceFile(file, source, ts.ScriptTarget.Latest, true);
+    return ast.statements.find(x => (ts.isClassDeclaration(x) || ts.isEnumDeclaration(x)) && x.name?.text === name).getText(ast).replace(/^export (default )?/, '');
+}
+const declarations = [enums, declaration('../src/search/MerlinPrimitive.ts', 'MerlinType'),
+    requestClass.getText(requestAst).replace(/^export /, ''), cls.getText(backendAst).replace(/^export /, ''),
+    declaration('../connectors/inmemory/InMemoryDbCollection.ts', 'InMemoryDbCollection'),
+    declaration('../connectors/inmemory/InMemoryDbIndex.ts', 'InMemoryDbIndex')];
+const emitted = ts.transpileModule(declarations.join('\n'), {compilerOptions: {target: ts.ScriptTarget.ES2022}}).outputText;
+// Actual complete request, collection, index and backend classes; isolate their
+// existing import cycle. This is not whole-module/application acceptance.
+const {Backend, OperationType, Request, Collection, Index} = new Function('Util', emitted + '\nreturn {Backend: InMemoryMerlinBackend, OperationType, Request: MerlinSearchRequest, Collection: InMemoryDbCollection, Index: InMemoryDbIndex};')(Util);
 
 function search(phases: any[][], entries: any[]) {
     const result: any[] = [];
@@ -32,6 +42,21 @@ describe('in-memory search phases', () => {
     it('handles offset-only and unlimited windows without dropping the last entry', () => {
         expect(search([[], [{type: OperationType.SIZE, args: {offset: 1}}]], entries)).to.deep.equal(entries.slice(1));
         expect(search([[], [{type: OperationType.SIZE, args: {limit: -1}}]], entries)).to.deep.equal(entries);
+    });
+    it('intersects through request and collection/index APIs, including a following limit', async () => {
+        for (const Dataset of [Collection, Index]) {
+            const dataset = new Dataset('fixture');
+            entries.forEach((entry, i) => Dataset === Collection ? dataset.addEntry(String(i), entry) : dataset.addEntry(entry));
+            for (const limited of [false, true]) {
+                const left = new Request(null, 'fixture', [filter(condition('name', 'a'))]);
+                const right = new Request(null, 'fixture', [filter(condition('kind', 'two'))]);
+                left.intersect(right);
+                if (limited) left.limit(1);
+                const result = await dataset.search(left, new Index('result'));
+                expect(result.getAsList()).to.deep.equal([entries[1]]);
+                expect(result.getEntry(0)).to.equal(entries[1]);
+            }
+        }
     });
     it('unions entries from nested requests and selects children', () => {
         const nested = {getPhases: () => [[filter(condition('name', 'b'))]]};

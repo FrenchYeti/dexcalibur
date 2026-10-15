@@ -128,8 +128,8 @@ export class InMemoryMerlinBackend {
                     phaseRes[i] = input.concat(phaseRes[i]);
                     break;
                 case OperationType.INTERSECT:
-                    phaseRes[i] = this._search((phases[i][0].args as NestedRequestOperationArgs).request as MerlinSearchRequest, pResult);
-
+                    const nested = new Set(this._search((phases[i][0].args as NestedRequestOperationArgs).request as MerlinSearchRequest, pResult).results);
+                    phaseRes[i] = input.filter(entry => nested.has(entry));
                     break;
                 case OperationType.JOIN:
                     phaseRes[i] = this._search((phases[i][0].args as NestedRequestOperationArgs).request as MerlinSearchRequest, pResult);

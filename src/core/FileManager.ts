@@ -22,9 +22,12 @@
 import DexcaliburEngine from "../DexcaliburEngine.js";
 import {GridFSBucket, GridFSBucketReadStream} from "mongodb";
 import {IFileDatabase} from "./commons.js";
-import {Readable} from "stream";
+import {Readable, pipeline as streamPipeline} from "stream";
+import {promisify} from "util";
 import * as _fs_ from "fs";
 import {EngineDatabaseException} from "../errors/EngineDatabaseException.js";
+
+const pipeline = promisify(streamPipeline);
 
 /**
  * File manager help to implement a database-backed filesystem
@@ -88,15 +91,8 @@ export class FileManager {
 
 
 
-        return new Promise<any>((resolve, reject) => {
-
-            pStream
-                .pipe(bucketStream)
-                .on('finish', () => {
-                    resolve(bucketStream.id);
-                })
-                .on('error', reject);
-        });
+        await pipeline(pStream, bucketStream);
+        return bucketStream.id;
 
         //return bucketStream.id;
     }
@@ -143,23 +139,8 @@ export class FileManager {
         const bucketStream = this._buckets[pBucket].openDownloadStreamByName(pFile);
         //bucketStream.pipe(_fs_.createWriteStream(pOutputPath));
 
-        return new Promise((resolve, reject) => {
-            bucketStream
-                .on('end', () => {
-                })
-                .on('error', (err) => {
-                    reject(err);
-                })
-                .pipe(_fs_.createWriteStream(pOutputPath))
-                .on('finish', async () => {
-                    try {
-                        console.log(pOutputPath,_fs_.existsSync(pOutputPath));
-                        resolve(true);
-                    } catch (err) {
-                        reject(err);
-                    }
-                });
-        });
+        await pipeline(bucketStream, _fs_.createWriteStream(pOutputPath));
+        return true;
     }
 
     /**

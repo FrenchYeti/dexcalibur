@@ -1016,7 +1016,7 @@ export class EngineNode implements INode {
 
 
             // TODO : save waitingQueue in DB
-            await this._engine.getEngineDB().updateOrder(pOrder,['dates','waitingQueue']);
+            await this._engine.getEngineDB().updateOrder(pOrder,['dates','waitingQueue','state','stateDates']);
             await this.save(['waitingQueue']);
 
             return;

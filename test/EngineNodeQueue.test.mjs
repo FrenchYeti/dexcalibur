@@ -20,9 +20,12 @@ function fixture(queue, state = 'busy') {
     instance.isReady = () => false;
     instance.refreshWaitingQueue = async () => {};
     instance.save = async () => {};
-    instance._engine = { getEngineDB: () => ({ updateOrder: async () => {} }) };
-    const order = { getUUID: () => 'new-order', getUID: () => 'new-order', getOption: () => ({ owner: 'owner' }), dates: {}, setState: value => { order.state = value; } };
-    return { instance, order };
+    const persisted = {};
+    instance._engine = { getEngineDB: () => ({ updateOrder: async (order, fields) => {
+        for (const field of fields) persisted[field] = structuredClone(order[field]);
+    } }) };
+    const order = { getUUID: () => 'new-order', getUID: () => 'new-order', getOption: () => ({ owner: 'owner' }), dates: {}, stateDates: {}, setState: value => { order.state = value; order.stateDates[value] = 7; } };
+    return { instance, order, persisted };
 }
 
 test('different scan orders can queue while duplicate orders are skipped', async () => {
@@ -34,8 +37,10 @@ test('different scan orders can queue while duplicate orders are skipped', async
 });
 
 test('starting nodes mark the queued order waiting without requiring an active scan', async () => {
-    const { instance, order } = fixture([], 'starting');
+    const { instance, order, persisted } = fixture([], 'starting');
     await instance.startScan(order);
     assert.equal(order.state, 'waiting');
     assert.equal(instance.waitingQueue[0].order, 'new-order');
+    assert.equal(persisted.state, 'waiting');
+    assert.deepEqual(persisted.stateDates, { waiting: 7 });
 });
